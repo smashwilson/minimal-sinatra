@@ -1,4 +1,11 @@
-FROM ruby:2.1.5-onbuild
+FROM ruby:2.3.1-alpine
+
+COPY Gemfile /usr/src/app/Gemfile
+COPY Gemfile.lock /usr/src/app/Gemfile.lock
+WORKDIR /usr/src/app
+RUN bundle install
+
+COPY . /usr/src/app
 
 EXPOSE 4567
 
